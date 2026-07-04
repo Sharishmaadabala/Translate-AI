@@ -1,0 +1,417 @@
+{% extends "base.html" %}
+
+{% block title %}Indic2Deutsch{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="hero-left">
+
+        <h1>
+
+            Translate
+            <span>Any Language</span>
+
+            into Any Language
+
+        </h1>
+
+        <p>
+
+            Translate text from 23+ Indian languages directly into any language.
+            Fast, accurate and beautifully designed for students,
+            professionals and travelers.
+
+        </p>
+
+        <div class="button-row">
+
+            <button class="btn-primary">
+
+                <i class="fa-solid fa-language"></i>
+
+                Start Translating
+
+            </button>
+
+            <button class="btn-secondary">
+
+                <i class="fa-solid fa-circle-info"></i>
+
+                Learn More
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="hero-right">
+
+    <div class="ai-hero">
+
+        <div class="glow-circle glow1"></div>
+        <div class="glow-circle glow2"></div>
+        <div class="glow-circle glow3"></div>
+
+        <div class="main-globe">
+            🌍
+        </div>
+
+       <div class="lang-card card1">🇮🇳 Telugu</div>
+<div class="lang-card card2">🇯🇵 Japanese</div>
+<div class="lang-card card3">🇩🇪 German</div>
+<div class="lang-card card4">🇷🇺 Russian</div>
+<div class="lang-card card5">🇨🇳 Chinese</div>
+<div class="lang-card card6">🇫🇷 French</div>
+
+    </div>
+
+</div>
+
+</section>
+
+<!-- TRANSLATOR -->
+
+<section class="translate-card">
+
+    <div class="translate-header">
+
+        <div>
+
+            <h2>Language Translator</h2>
+
+            <p>Choose your language and translate instantly.</p>
+
+        </div>
+
+    </div>
+
+<form method="POST" action="/translate">
+
+<div class="language-row">
+
+<div class="language-box">
+
+<label for="source_language">
+    From Language
+</label>
+
+<select
+    id="source_language"
+    name="source_language">
+
+<option value="English">English</option>
+
+<option value="Hindi">Hindi</option>
+
+<option value="Telugu">Telugu</option>
+
+<option value="Tamil">Tamil</option>
+
+<option value="Kannada">Kannada</option>
+
+<option value="Malayalam">Malayalam</option>
+
+<option value="Marathi">Marathi</option>
+
+<option value="Gujarati">Gujarati</option>
+
+<option value="Bengali">Bengali</option>
+
+<option value="Punjabi">Punjabi</option>
+
+<option value="Urdu">Urdu</option>
+
+<option value="Odia">Odia</option>
+
+<option value="Assamese">Assamese</option>
+
+<option value="Nepali">Nepali</option>
+
+<option value="Kashmiri">Kashmiri</option>
+
+<option value="Sindhi">Sindhi</option>
+
+<option value="Sanskrit">Sanskrit</option>
+
+<option value="Maithili">Maithili</option>
+
+</select>
+
+
+</div>
+
+<div class="swap-btn">
+
+<i class="fa-solid fa-arrow-right"></i>
+
+</div>
+
+<div class="language-box">
+
+    <label for="target_language">To Language</label>
+
+    <select id="target_language" name="target_language">
+
+        <option value="English"selected>English</option>
+        <option value="German" > German</option>
+        <option value="French">French</option>
+        <option value="Spanish">Spanish</option>
+        <option value="Italian">Italian</option>
+        <option value="Portuguese">Portuguese</option>
+        <option value="Russian">Russian</option>
+        <option value="Japanese">Japanese</option>
+        <option value="Korean">Korean</option>
+        <option value="Chinese">Chinese</option>
+        <option value="Arabic">Arabic</option>
+
+        <option value="Hindi">Hindi</option>
+        <option value="Telugu">Telugu</option>
+        <option value="Tamil">Tamil</option>
+        <option value="Kannada">Kannada</option>
+        <option value="Malayalam">Malayalam</option>
+        <option value="Marathi">Marathi</option>
+        <option value="Gujarati">Gujarati</option>
+        <option value="Bengali">Bengali</option>
+        <option value="Punjabi">Punjabi</option>
+        <option value="Urdu">Urdu</option>
+        <option value="Odia">Odia</option>
+        <option value="Assamese">Assamese</option>
+        <option value="Nepali">Nepali</option>
+        <option value="Kashmiri">Kashmiri</option>
+        <option value="Sindhi">Sindhi</option>
+        <option value="Sanskrit">Sanskrit</option>
+        <option value="Maithili">Maithili</option>
+
+    </select>
+
+</div>
+
+</div>
+
+<div class="text-grid">
+
+    <!-- Input Box -->
+    <div class="text-box">
+
+        <label for="inputText">Enter Text</label>
+
+        <textarea
+            id="inputText"
+            name="input_text"
+            placeholder="Type in any Indian language..."
+            required>{{ input_text }}</textarea>
+
+        <div class="char-count">
+            <span id="count">{{ input_text|length if input_text else 0 }}</span> / 5000
+        </div>
+
+    </div>
+
+    <!-- Output Box -->
+    <div class="text-box">
+
+<div class="copy-container">
+
+
+    <label for="outputText">
+        Translated Text
+    </label>
+
+    <textarea
+        id="outputText"
+        name="translated_text"
+        readonly>{{ translated_text }}</textarea>
+
+</div>
+
+
+</div>
+
+</div>
+
+<div class="button-row">
+
+<button class="btn-primary" type="submit">
+
+<i class="fa-solid fa-language"></i>
+
+Translate
+
+</button>
+
+<button
+type="button"
+class="btn-secondary"
+onclick="window.location.href='/'">
+
+Clear
+
+</button>
+
+<button
+    type="button"
+    class="btn-secondary"
+    onclick="window.location.href='/voice'">
+
+    <i class="fa-solid fa-microphone"></i>
+    Voice Input
+
+</button>
+
+<button
+type="button"
+class="btn-secondary"
+onclick="copyTranslation()">
+
+<i class="fa-solid fa-copy"></i>
+
+Copy
+
+</button>
+
+</div>
+
+</form>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="features">
+
+<div class="feature">
+
+<i class="fa-solid fa-globe"></i>
+
+<h3>
+
+23+ Languages
+
+</h3>
+
+<p>
+
+Supports major Indian languages with direct German translation.
+
+</p>
+
+</div>
+
+<div class="feature">
+
+<i class="fa-solid fa-bolt"></i>
+
+<h3>
+
+Fast Translation
+
+</h3>
+
+<p>
+
+Powered by Facebook NLLB multilingual AI.
+
+</p>
+
+</div>
+
+<div class="feature">
+
+<i class="fa-solid fa-microphone-lines"></i>
+
+<h3>
+
+Voice Support
+
+</h3>
+
+<p>
+
+Speak naturally and translate instantly.
+
+</p>
+
+</div>
+
+<div class="feature">
+
+<i class="fa-solid fa-clock-rotate-left"></i>
+
+<h3>
+
+History
+
+</h3>
+
+<p>
+
+Save all translations for future reference.
+
+</p>
+
+</div>
+
+<div class="feature">
+
+<i class="fa-solid fa-cloud-arrow-down"></i>
+
+<h3>
+
+Download
+
+</h3>
+
+<p>
+
+Export translated text anytime.
+
+</p>
+
+</div>
+
+<div class="feature">
+
+<i class="fa-solid fa-shield-halved"></i>
+
+<h3>
+
+Secure
+
+</h3>
+
+<p>
+
+Your translations stay private and secure.
+
+</p>
+
+</div>
+
+</section>
+
+<footer class="footer">
+
+© 2026 Indic2Deutsch
+
+Made with ❤️ using Flask & Facebook NLLB-200
+
+</footer>
+<script>
+function copyTranslation() {
+    const output = document.getElementById("outputText");
+
+    if (output.value.trim() === "") {
+        alert("No translated text to copy.");
+        return;
+    }
+
+    navigator.clipboard.writeText(output.value)
+        .then(() => alert("Copied successfully!"))
+        .catch(() => alert("Failed to copy."));
+}
+</script>
+{% endblock %}

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Translate AI
+Smart Language Translation{% endblock %}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+
+    {% block head %}
+
+    {% endblock %}
+
+</head>
+<body id="body">
+
+    <!-- Animated Background -->
+
+    <div class="background">
+
+        <span class="circle c1"></span>
+        <span class="circle c2"></span>
+        <span class="circle c3"></span>
+        <span class="circle c4"></span>
+
+    </div>
+
+    <div class="layout">
+
+        <!-- Sidebar -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+
+                <div class="logo-icon">
+
+                    🌍
+
+                </div>
+
+                <div>
+
+                    <h2>Translate AI</h2>
+
+                    <small>Smart Language Translation</small>
+
+                </div>
+
+            </div>
+
+            <nav>
+
+                <a href="{{ url_for('home') }}"
+class="nav-link {% if request.endpoint == 'home' %}active{% endif %}">
+
+                    <i class="fa-solid fa-house"></i>
+
+                    <span>Home</span>
+
+                </a>
+                 <a href="{{ url_for('voice') }}"
+class="nav-link {% if request.endpoint == 'voice' %}active{% endif %}">
+
+                    <i class="fa-solid fa-microphone"></i>
+
+                    <span>Voice</span>
+
+                </a>
+
+                <a href="{{ url_for('profile') }}"
+class="nav-link {% if request.endpoint == 'profile' %}active{% endif %}">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <span>Profile</span>
+
+                </a>
+
+                <a href="{{ url_for('history') }}"
+class="nav-link {% if request.endpoint == 'history' %}active{% endif %}">
+
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+
+                    <span>History</span>
+
+                </a>
+
+                <a href="{{ url_for('settings') }}"
+class="nav-link {% if request.endpoint == 'settings' %}active{% endif %}">
+                    <i class="fa-solid fa-gear"></i>
+
+                    <span>Settings</span>
+
+                </a>
+
+                <a href="{{ url_for('logout') }}" class="nav-link">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    <span>Logout</span>
+
+                </a>
+
+            </nav>
+
+        </aside>
+
+        <!-- Main Content -->
+
+        <main class="content fade-up">
+
+            {% block content %}
+
+            {% endblock %}
+
+        </main>
+
+    </div>
+
+    <!-- Toast -->
+
+    <div class="toast" id="toast">
+
+        Success
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+    {% block scripts %}
+
+    {% endblock %}
+
+</body>
+
+</html>

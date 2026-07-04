@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block title %}
+Settings
+{% endblock %}
+
+{% block head %}
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/settings.css') }}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="settings-page">
+
+    <h1>Settings</h1>
+
+    <p class="subtitle">
+        Manage your translator preferences.
+    </p>
+
+    <div class="settings-grid">
+
+        <div class="setting-card">
+
+            <i class="fa-solid fa-moon"></i>
+
+            <h3>Dark Mode</h3>
+
+            <p>
+                Switch between light and dark themes.
+            </p>
+
+            <label for="themeSwitch">Dark Mode</label>
+
+<label class="switch">
+
+    <input
+        type="checkbox"
+        id="themeSwitch"
+        name="themeSwitch"
+        title="Dark Mode">
+
+    <span class="slider"></span>
+
+</label>
+
+        </div>
+
+        <div class="setting-card">
+
+            <i class="fa-solid fa-language"></i>
+
+
+           <label for="defaultLanguage">Default Language</label>
+
+<select
+    id="defaultLanguage"
+    name="defaultLanguage"
+    title="Default Language">
+
+                <option>English</option>
+                <option>Telugu</option>
+                <option>Hindi</option>
+                <option>Tamil</option>
+                <option>Kannada</option>
+
+            </select>
+
+        </div>
+
+        <div class="setting-card">
+
+            <i class="fa-solid fa-trash"></i>
+
+            <h3>Clear History</h3>
+
+            <p>Delete all saved translations.</p>
+
+            <button class="btn-secondary">
+
+                Clear History
+
+            </button>
+
+        </div>
+
+        <div class="setting-card">
+
+            <i class="fa-solid fa-circle-info"></i>
+
+            <h3>About</h3>
+
+            <p>
+
+                Indic2Deutsch
+
+                <br>
+
+                Version 1.0
+
+                <br>
+
+                Flask + NLLB-200
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const themeSwitch = document.getElementById("themeSwitch");
+
+themeSwitch.addEventListener("change", function(){
+
+    if(this.checked){
+        document.body.classList.add("light-mode");
+    }
+    else{
+        document.body.classList.remove("light-mode");
+    }
+
+});
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="profile-page">
+
+    <div class="profile-card">
+
+        <div class="profile-top">
+
+            <img src="{{ url_for('static', filename='images/profile.png') }}" class="profile-image" alt="Profile image">
+
+            <h2>Sharishma Adabala</h2>
+
+
+        </div>
+
+        <div class="profile-details">
+
+            <div class="detail">
+                <span>Name</span>
+                <strong>Sharishma Adabala</strong>
+            </div>
+
+            <div class="detail">
+                <span>Email</span>
+                <strong>{{ session.email }}</strong>
+            </div>
+
+            <div class="detail">
+                <span>Phone</span>
+                <strong>+91 XXXXXXXXXX</strong>
+            </div>
+
+            <div class="detail">
+                <span>Joined</span>
+                <strong>June 2026</strong>
+            </div>
+
+        </div>
+
+        <div class="profile-buttons">
+
+            <a href="{{ url_for('edit_profile') }}" class="btn-primary">
+                <i class="fa-solid fa-user-pen"></i>
+                Edit Profile
+            </a>
+
+            <a href="{{ url_for('change_password') }}" class="btn-secondary">
+                <i class="fa-solid fa-lock"></i>
+                Change Password
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="quick-actions">
+
+        <h2>Quick Actions</h2>
+
+        <a href="{{ url_for('history') }}" class="action-card">
+
+            <i class="fa-solid fa-clock-rotate-left"></i>
+
+            <div>
+
+                <h3>Translation History</h3>
+
+                <p>View all saved translations</p>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+        </a>
+
+        <a href="{{ url_for('settings') }}" class="action-card">
+
+            <i class="fa-solid fa-gear"></i>
+
+            <div>
+
+                <h3>Settings</h3>
+
+                <p>Manage your preferences</p>
+
+            </div>
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+        </a>
+
+    </div>
+
+    <div class="stats-card">
+
+        <h2>Account Statistics</h2>
+
+        <div class="stats-grid">
+
+            <div class="stat">
+
+                <i class="fa-solid fa-language"></i>
+
+                <h3>{{ total_translations }}</h3>
+
+                <p>Total Translations</p>
+
+            </div>
+
+            <div class="stat">
+
+                <i class="fa-solid fa-microphone"></i>
+
+                <h3>{{ voice_translations }}</h3>
+
+                <p>Voice Translations</p>
+
+            </div>
+
+            <div class="stat">
+
+                <i class="fa-solid fa-calendar"></i>
+
+                <h3>June 2026</h3>
+
+                <p>Member Since</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

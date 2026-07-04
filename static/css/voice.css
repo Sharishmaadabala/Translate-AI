@@ -1,0 +1,127 @@
+.voice-page{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:40px;
+
+}
+
+.voice-card{
+
+width:900px;
+
+background:rgba(255,255,255,.08);
+
+-webkit-backdrop-filter:blur(25px);
+
+backdrop-filter:blur(25px);
+
+padding:40px;
+
+border-radius:30px;
+
+border:1px solid rgba(255,255,255,.12);
+
+}
+
+.voice-card h1{
+
+text-align:center;
+
+margin-bottom:10px;
+
+}
+
+.voice-card p{
+
+text-align:center;
+
+opacity:.7;
+
+margin-bottom:35px;
+
+}
+
+.mic-container{
+
+display:flex;
+
+justify-content:center;
+
+margin-bottom:35px;
+
+}
+
+.mic-btn{
+
+width:90px;
+
+height:90px;
+
+border-radius:50%;
+
+border:none;
+
+cursor:pointer;
+
+font-size:35px;
+
+background:linear-gradient(135deg,#5B6CFF,#7C3AED);
+
+color:white;
+
+transition:.4s;
+
+}
+
+.mic-btn:hover{
+
+transform:scale(1.1);
+
+}
+
+.voice-box{
+
+margin-bottom:25px;
+
+}
+
+.voice-box textarea{
+
+height:160px;
+
+}
+
+
+
+@media(max-width:768px){
+
+.voice-card{
+
+width:100%;
+
+padding:25px;
+
+}
+
+}
+.voice-buttons{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:20px;
+    margin-top:30px;
+}
+
+.voice-buttons .btn-primary,
+.voice-buttons .btn-secondary{
+    width:180px !important;
+    height:60px !important;
+    min-height:60px !important;
+    padding:0 25px !important;
+    flex:none !important;
+}

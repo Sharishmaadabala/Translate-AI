@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block title %}Voice Translator{% endblock %}
+
+{% block head %}
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/voice.css') }}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="voice-page">
+
+    <div class="voice-card">
+
+        <h1>
+
+            <i class="fa-solid fa-microphone"></i>
+
+            Voice Translator
+
+        </h1>
+
+        <p>
+    Speak in any supported language and translate it into your selected language.
+</p>
+
+<div class="language-box">
+
+    <label for="target_language">Translate To</label>
+
+    <select id="target_language" name="target_language">
+
+        <option value="English">English</option>
+        <option value="German">German</option>
+        <option value="French">French</option>
+        <option value="Spanish">Spanish</option>
+        <option value="Italian">Italian</option>
+        <option value="Portuguese">Portuguese</option>
+        <option value="Russian">Russian</option>
+        <option value="Japanese">Japanese</option>
+        <option value="Korean">Korean</option>
+        <option value="Chinese">Chinese</option>
+        <option value="Arabic">Arabic</option>
+
+        <option value="Hindi">Hindi</option>
+        <option value="Telugu">Telugu</option>
+        <option value="Tamil">Tamil</option>
+        <option value="Kannada">Kannada</option>
+        <option value="Malayalam">Malayalam</option>
+        <option value="Marathi">Marathi</option>
+        <option value="Gujarati">Gujarati</option>
+        <option value="Bengali">Bengali</option>
+        <option value="Punjabi">Punjabi</option>
+        <option value="Urdu">Urdu</option>
+        <option value="Odia">Odia</option>
+        <option value="Assamese">Assamese</option>
+        <option value="Nepali">Nepali</option>
+
+    </select>
+
+</div>
+
+<div class="mic-container">
+
+    <button id="micButton" class="mic-btn" type="button" aria-label="Start voice input">
+
+        <i class="fa-solid fa-microphone"></i>
+
+    </button>
+
+</div>
+        <div class="voice-box">
+
+            <label>Recognized Speech</label>
+
+            <textarea
+                id="speechText"
+                placeholder="Your speech will appear here..."
+                readonly></textarea>
+
+        </div>
+
+        <div class="voice-box">
+
+            <label>Translated Text</label>
+
+            <textarea
+                id="translatedSpeech"
+                placeholder="Translation will appear here..."
+                readonly></textarea>
+
+        </div>
+
+       <div class="voice-buttons">
+
+            <button
+    class="btn-primary"
+    type="button"
+    onclick="translateVoice()">
+
+    Translate
+
+</button>
+
+            <button class="btn-secondary"
+            onclick="copyVoiceTranslation()">
+        Copy
+    </button>
+     <button
+        class="btn-secondary"
+        type="button"
+        onclick="clearVoice()">
+
+        Clear
+
+    </button>
+</div>
+
+        </div>
+
+    </div>
+
+</div>
+<script>
+
+async function translateVoice(){
+
+    const text = document.getElementById("speechText").value;
+    const target = document.getElementById("target_language").value;
+
+    if(text.trim() === ""){
+        alert("Please speak first.");
+        return;
+    }
+
+    const response = await fetch("/voice_translate",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            text:text,
+            target_language:target
+        })
+    });
+
+    const data = await response.json();
+
+    console.log(data);
+
+    const output = document.getElementById("translatedSpeech");
+
+    output.value = data.translation;
+    output.style.color = "white";
+    output.style.opacity = "1";
+
+}
+function clearVoice(){
+
+    document.getElementById("speechText").value = "";
+
+    document.getElementById("translatedSpeech").value = "";
+
+    document.getElementById("target_language").selectedIndex = 0;
+
+}
+</script>
+{% endblock %}
